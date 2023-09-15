@@ -1,10 +1,14 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import Footer from "@/features/footer/ui/footer";
 import Header from "@/features/header/ui/footer";
 import Navbar from "@/features/navbar/ui/navbar";
+import {Container} from "@mui/material";
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({
+    subsets: ["cyrillic"],
+    weight: ["400", "500", "300"]
+})
 
 export const metadata = {
   title: 'Test Next App',
@@ -14,10 +18,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={roboto.className}>
         <Header/>
         <Navbar/>
-        {children}
+        <main>
+            <Container maxWidth="lg">
+                {children}
+            </Container>
+        </main>
         <Footer/>
       </body>
     </html>
